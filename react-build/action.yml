@@ -1,0 +1,23 @@
+name: React Build Action
+description: Setup Node.js, install dependencies, run ESLint and build React application
+
+runs:
+  using: composite
+
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Run ESLint
+      shell: bash
+      run: npm run lint
+
+    - name: Build React App
+      shell: bash
+      run: npm run build
